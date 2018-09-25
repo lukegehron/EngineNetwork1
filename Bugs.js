@@ -58,11 +58,15 @@ function draw() {
       line2X = bugDiameter[j]/2*sin((-frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
       line2Y = bugDiameter[j]/2*cos((-frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
     }
-    stroke(0);
+    //stroke(0);
     line(line1X,line1Y,line2X,line2Y);
-    fill('yellow');
-    ellipse(line1X,line1Y,5,5);
-    if (mouseX < line1X+15 && mouseX > line1X - 15 && mouseY < line1Y+15 && mouseY > line1Y - 15 ){
+    fill(50);
+      push();
+      noStroke();
+      fill('yellow');
+      ellipse(line1X,line1Y,7,7);
+      pop();
+    if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
       text("ENGINE", line1X, line1Y);
     }
   }
