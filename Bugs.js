@@ -1,8 +1,8 @@
 let bugXArray = [];
 let bugYArray = [];
-speed = .2;
+speed = .1;
 let bugDiameter = [];
-let numBugs = 6
+let numBugs = 7;
 
 function setup() {
   createCanvas(710, 400);
@@ -21,7 +21,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(255);
   for (i = 0; i < numBugs; i++){
     bugXArray[i] += random(-speed, speed);
     bugYArray[i] += random(-speed, speed);
@@ -31,7 +31,7 @@ function draw() {
   }
   for (let i = 0; i < numBugs; i++){
     for (let j = 0; j < numBugs; j++){
-      stroke((j+10)*10,(i+5)*20,(j+10)*25);
+      stroke((i+10)*10,(i+5)*20,(j+10)*25);
     //line(bugXArray[i],bugYArray[i],bugXArray[j],bugYArray[j]);
     let line1X = 0;
     let line1Y = 0;
