@@ -1,6 +1,6 @@
 let bugXArray = [];
 let bugYArray = [];
-speed = .1;
+speed = .3;
 let bugDiameter = [];
 let numBugs = 7;
 
