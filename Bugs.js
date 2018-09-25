@@ -60,15 +60,20 @@ function draw() {
     }
     //stroke(0);
     line(line1X,line1Y,line2X,line2Y);
-    fill(50);
+    
       push();
-      noStroke();
+      
       fill('yellow');
       ellipse(line1X,line1Y,7,7);
-      pop();
-    if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
+      push();
+      noStroke();
+      fill(50);
+      if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
       text("ENGINE", line1X, line1Y);
     }
+      pop();
+      pop();
+    
   }
  }
 }
