@@ -38,25 +38,25 @@ function draw() {
     let line2X = 0;
     let line2Y = 0;
     if (bugDiameter[i] < 50 && bugDiameter[j] < 50){
-      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i])+bugDiameter[i])+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i])+bugDiameter[i])+bugYArray[i];
-      line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
-      line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
+      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugYArray[i];
+      line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugXArray[j];
+      line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugYArray[j];
     }else if  (bugDiameter[i] > 50 && bugDiameter[j] < 50){
-      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i])+bugDiameter[i])+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i])+bugDiameter[i])+bugYArray[i];
-      line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
-      line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
+      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugYArray[i];
+      line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugXArray[j];
+      line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugYArray[j];
     }else if  (bugDiameter[j] > 50 && bugDiameter[i] < 50){
-      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i])+bugDiameter[i])+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i])+bugDiameter[i])+bugYArray[i];
-      line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
-      line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
+      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugYArray[i];
+      line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugXArray[j];
+      line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugYArray[j];
     }else{
-      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i])+bugDiameter[i])+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i])+bugDiameter[i])+bugYArray[i];
-      line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
-      line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
+      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]*4)+bugDiameter[i]*4)+bugYArray[i];
+      line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugXArray[j];
+      line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j]*4)+bugDiameter[j]*4)+bugYArray[j];
     }
     //stroke(0);
     line(line1X,line1Y,line2X,line2Y);
