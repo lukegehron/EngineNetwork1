@@ -31,7 +31,7 @@ function draw() {
   }
   for (let i = 0; i < numBugs; i++){
     for (let j = 0; j < numBugs; j++){
-      stroke((i+10)*20,(i+5)*5,(j+10)*7);
+      stroke((i+10)*20,(j+5)*5,(j+10)*7);
     //line(bugXArray[i],bugYArray[i],bugXArray[j],bugYArray[j]);
     let line1X = 0;
     let line1Y = 0;
@@ -58,8 +58,9 @@ function draw() {
       line2X = bugDiameter[j]/2*sin((-frameCount/bugDiameter[j])+bugDiameter[j])+bugXArray[j];
       line2Y = bugDiameter[j]/2*cos((-frameCount/bugDiameter[j])+bugDiameter[j])+bugYArray[j];
     }
+    stroke(0);
     line(line1X,line1Y,line2X,line2Y);
-    fill(0);
+    fill('yellow');
     ellipse(line1X,line1Y,5,5);
     if (mouseX < line1X+15 && mouseX > line1X - 15 && mouseY < line1Y+15 && mouseY > line1Y - 15 ){
       text("ENGINE", line1X, line1Y);
