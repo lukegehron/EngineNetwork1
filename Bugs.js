@@ -31,7 +31,7 @@ function draw() {
   }
   for (let i = 0; i < numBugs; i++){
     for (let j = 0; j < numBugs; j++){
-      stroke((i+10)*10,(i+5)*20,(j+10)*5);
+      stroke((i+10)*20,(i+5)*5,(j+10)*7);
     //line(bugXArray[i],bugYArray[i],bugXArray[j],bugYArray[j]);
     let line1X = 0;
     let line1Y = 0;
