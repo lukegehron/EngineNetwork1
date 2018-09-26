@@ -21,8 +21,8 @@ Items 7+ are Orbital:
 let nameArray = ["Building Science", "Visualization", "Fabrication", "Computation", "Data Visualization"];
 let bugXArray = [];
 let bugYArray = [];
-let speed = .2;
-let m = 4;
+let speed = .1;
+let m = 8;
 let bugDiameter = [];
 let numBugs = 5;
 
