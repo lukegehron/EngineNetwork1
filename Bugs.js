@@ -6,7 +6,7 @@ ENGINE = 0 -- width/2, height/2 - static
 3 = "Fabrication" 1 - 6 + 9,10,11,13
 4 = "Computation" 1-6 + 8,10,12,13
 5 = "Data Visualization" 1-6 + 13
-6 = "Research + Tools"... maybe not add to graphic?
+6 = "Research + Tools"... maybe not add to group?
 7 = "VR + AR"
 8 = "Interactive Graphocs"
 9 = "CNC Machine"
@@ -22,9 +22,14 @@ let nameArray = ["Building Science", "Visualization", "Fabrication", "Computatio
 let bugXArray = [];
 let bugYArray = [];
 let speed = .2;
-let m = 3;
+let m = 4;
 let bugDiameter = [];
 let numBugs = 5;
+
+
+let line7X = 0; //VR + AR
+let line7Y = 0; //VR + AR
+let diameter7 = 35; //VR + AR
 
 function setup() {
   createCanvas(700, 400);
@@ -52,6 +57,8 @@ function draw() {
     stroke(255);
     //ellipse(bugXArray[i], bugYArray[i], bugDiameter[i], bugDiameter[i]);
   }
+
+
   for (let i = 0; i < numBugs; i++){
     for (let j = 0; j < numBugs; j++){
       stroke((i+10)*20,(j+5)*5,(j+10)*7);
@@ -84,6 +91,23 @@ function draw() {
     line(line1X,line1Y,line2X,line2Y);
     line(line1X,line1Y, width/2, height/2);
 
+
+
+    if (i == 1){ //Visualization
+      line7X = diameter7*sin((-frameCount/diameter7/m)+diameter7/m)+line1X;
+      line7Y = diameter7*cos((-frameCount/diameter7/m)+diameter7/m)+line1Y;
+      //line(line1X,line1Y, line7X, line7Y);
+      push();
+      strokeWeight(1);
+      stroke(0);
+      fill('yellow');
+      ellipse(line7X,line7Y,5,5);
+      pop();
+    }
+    if(abs(line1X - line7X) < diameter7*2 && abs(line1Y - line7Y) < diameter7*2){
+      line(line1X, line1Y, line7X, line7Y);
+    }
+
       push();
       noStroke();
       fill(50);
@@ -95,12 +119,17 @@ function draw() {
         noStroke();
         text(nameArray[i], line1X, line1Y);
       }
+      if (mouseX < line7X+20 && mouseX > line7X - 20 && mouseY < line7Y+20 && mouseY > line7Y - 20 ){
+        fill(50);
+        text("VR+AR", line7X, line7Y);
+      }
       strokeWeight(1);
       stroke(0);
       fill('yellow');
       ellipse(line1X,line1Y,7,7);
       pop();
   }
+
  }
  push();
  stroke(50);
