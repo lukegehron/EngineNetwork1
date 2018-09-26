@@ -140,8 +140,9 @@ function draw() {
  textAlign(CENTER);
  if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
    if(mouseIsPressed){
- text("ENGINE",width/2, height/2+32);
-}
-}
+     background(255,200);
+     text("ENGINE",width/2, height/2+32);
+    }
+  }
  pop();
 }
