@@ -26,6 +26,11 @@ let m = 8;
 let bugDiameter = [];
 let numBugs = 5;
 
+let line1X = 0;
+let line1Y = 0;
+let line2X = 0;
+let line2Y = 0;
+
 
 let line7X = 0; //VR + AR
 let line7Y = 0; //VR + AR
@@ -34,11 +39,11 @@ let diameter7 = 35; //VR + AR
 function setup() {
   createCanvas(700, 400);
   for (let i=0; i<numBugs; i++){
-    let x = random(width/6, width*(5/6));
+    let x = random(width/7, width*(6/7));
     bugXArray.push(x);
   }
   for (let i=0; i<numBugs; i++){
-    let y = random(height/6, height*(5/6));
+    let y = random(height/7, height*(6/7));
     bugYArray.push(y);
   }
   for (let i=0; i<numBugs; i++){
@@ -61,12 +66,15 @@ function draw() {
 
   for (let i = 0; i < numBugs; i++){
     for (let j = 0; j < numBugs; j++){
-      stroke((i+10)*20,(j+5)*5,(j+10)*7);
+            if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
+              strokeWeight(2);
+              stroke((i+10)*20,(j+5)*5,(j+10)*7);
+    }else{
+      strokeWeight(1);
+      stroke(150,50);
+    }
     //line(bugXArray[i],bugYArray[i],bugXArray[j],bugYArray[j]);
-    let line1X = 0;
-    let line1Y = 0;
-    let line2X = 0;
-    let line2Y = 0;
+
     if (bugDiameter[i] < 50 && bugDiameter[j] < 50){
       line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
       line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
@@ -112,7 +120,7 @@ function draw() {
       noStroke();
       fill(50);
       if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
-        strokeWeight(3);
+        strokeWeight(2);
         stroke((i+10)*20,(j+5)*5,(j+10)*7);
         line(line1X,line1Y,line2X,line2Y);
         line(line1X,line1Y, width/2, height/2);
@@ -131,18 +139,24 @@ function draw() {
   }
 
  }
- push();
+ //push();
  stroke(50);
  fill(255);
  ellipse(width/2, height/2, 10,10);
  fill(50);
+ push();
  textSize(100);
  textAlign(CENTER);
  if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
+
    if(mouseIsPressed){
      background(255,200);
-     text("ENGINE",width/2, height/2+32);
-    }
-  }
+ text("ENGINE",width/2, height/2+32);
+}
+if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
+  noStroke();
+  text(nameArray[i], line1X, line1Y);
+}
+}
  pop();
 }
