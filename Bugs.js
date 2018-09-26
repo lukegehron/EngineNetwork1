@@ -68,10 +68,10 @@ function draw() {
     for (let j = 0; j < numBugs; j++){
             if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
               strokeWeight(2);
-              stroke((i+10)*20,(j+5)*5,(j+10)*7);
+              stroke((i+10)*20,(j+5)*5,(j+10)*7,i+2*25);
     }else{
       strokeWeight(1);
-      stroke(150,50);
+      stroke((j+20)*5,i+2*25);
     }
     //line(bugXArray[i],bugYArray[i],bugXArray[j],bugYArray[j]);
 
@@ -121,7 +121,7 @@ function draw() {
       fill(50);
       if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
         strokeWeight(2);
-        stroke((i+10)*20,(j+5)*5,(j+10)*7);
+        stroke((i+10)*20,(j+5)*5,(j+10)*7,i+5*25);
         line(line1X,line1Y,line2X,line2Y);
         line(line1X,line1Y, width/2, height/2);
         noStroke();
