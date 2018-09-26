@@ -1,12 +1,33 @@
+/*
+ENGINE = 0 -- width/2, height/2 - static
+
+1 = "Building Science" 1 - 6
+2 = "Visualization" 1 - 6 + 7
+3 = "Fabrication" 1 - 6 + 9,10,11,13
+4 = "Computation" 1-6 + 8,10,12,13
+5 = "Data Visualization" 1-6 + 13
+6 = "Research + Tools"... maybe not add to graphic?
+7 = "VR + AR"
+8 = "Interactive Graphocs"
+9 = "CNC Machine"
+10 = "3D Printing"
+11 = "Laser Cutting"
+12 = "Simulation"
+13 = "Parametric Design"
+
+Items 7+ are Orbital:
+  they find the centerpoint of their parent groups and circle around their collective centerpoint
+*/
+let nameArray = ["Building Science", "Visualization", "Fabrication", "Computation", "Data Visualization"];
 let bugXArray = [];
 let bugYArray = [];
 let speed = .2;
 let m = 3;
 let bugDiameter = [];
-let numBugs = 7;
+let numBugs = 5;
 
 function setup() {
-  createCanvas(710, 400);
+  createCanvas(700, 400);
   for (let i=0; i<numBugs; i++){
     let x = random(width/6, width*(5/6));
     bugXArray.push(x);
@@ -19,6 +40,7 @@ function setup() {
     let dia = random(15,50);
     bugDiameter.push(dia);
   }
+  //strokeWeight(2);
 }
 
 function draw() {
@@ -59,22 +81,38 @@ function draw() {
       line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
       line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
     }
-    //stroke(0);
     line(line1X,line1Y,line2X,line2Y);
-    
-      push();
-      
-      fill('yellow');
-      ellipse(line1X,line1Y,7,7);
+    line(line1X,line1Y, width/2, height/2);
+
       push();
       noStroke();
       fill(50);
       if (mouseX < line1X+20 && mouseX > line1X - 20 && mouseY < line1Y+20 && mouseY > line1Y - 20 ){
-      text("ENGINE", line1X, line1Y);
-    }
+        strokeWeight(3);
+        stroke((i+10)*20,(j+5)*5,(j+10)*7);
+        line(line1X,line1Y,line2X,line2Y);
+        line(line1X,line1Y, width/2, height/2);
+        noStroke();
+        text(nameArray[i], line1X, line1Y);
+      }
+      strokeWeight(1);
+      stroke(0);
+      fill('yellow');
+      ellipse(line1X,line1Y,7,7);
       pop();
-      pop();
-    
   }
  }
+ push();
+ stroke(50);
+ fill(255);
+ ellipse(width/2, height/2, 10,10);
+ fill(50);
+ textSize(100);
+ textAlign(CENTER);
+ if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
+   if(mouseIsPressed){
+ text("ENGINE",width/2, height/2+32);
+}
+}
+ pop();
 }
