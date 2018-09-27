@@ -88,12 +88,12 @@ function draw() {
   for (i = 0; i < numBugs; i++){
 
     if (bugDiameter[i] % 2 == 0){
-      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-    }else{
-      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
-      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-    }
+          bugXArray[i] = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i]+((mouseX-pmouseX)/50);
+          bugYArray[i] = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i]+((mouseY-pmouseY)/50);
+        }else{
+          bugXArray[i] = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i]+((mouseX-pmouseX)/50);
+          bugYArray[i] = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i]+((mouseY-pmouseY)/50);
+        }
     //fill(100);
     if (abs(mouseX - line1X) < 20 && abs(mouseY - line1Y) < 20){
       if (mouseIsPressed){
