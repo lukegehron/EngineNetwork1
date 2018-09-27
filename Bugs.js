@@ -1,3 +1,4 @@
+
 /*
 ENGINE = 0 -- width/2, height/2 - static
 
@@ -21,8 +22,8 @@ Items 7+ are Orbital:
 let nameArray = ["Building Science", "Visualization", "Fabrication",  "Data Visualization", "Computation"];
 let bugXArray = [];
 let bugYArray = [];
-let speed = .1;
-let m = 8;
+let speed = .2;
+let m = 4;
 let bugDiameter = [];
 let numBugs = nameArray.length;
 
@@ -76,7 +77,7 @@ function setup() {
     }
   }
   for (let i=0; i<numBugs; i++){
-    let dia = random(15,50);
+    let dia = int(random(15,50));
     bugDiameter.push(dia);
   }
   //strokeWeight(2);
@@ -85,14 +86,43 @@ function setup() {
 function draw() {
   background(255);
   for (i = 0; i < numBugs; i++){
-    bugXArray[i] += random(-speed, speed);
-    bugYArray[i] += random(-speed, speed);
+
+    if (bugDiameter[i] % 2 == 0){
+      line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
+    }else{
+      line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
+      line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
+    }
+    //fill(100);
+    if (abs(mouseX - line1X) < 20 && abs(mouseY - line1Y) < 20){
+      if (mouseIsPressed){
+        if (bugDiameter[i] % 2 == 0){
+          bugXArray[i] = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i]+(mouseX-pmouseX);
+          bugYArray[i] = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i]+(mouseY-pmouseY);
+        }else{
+          bugXArray[i] = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i]+(mouseX-pmouseX);
+          bugYArray[i] = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i]+(mouseY-pmouseY);
+        }
+      }
+    }else{
+      bugXArray[i] += random(-speed, speed);
+      bugYArray[i] += random(-speed, speed);
+    }
+    push();
+    stroke(220,100);
+    noFill();
+    ellipse(bugXArray[i],bugYArray[i],bugDiameter[i]*2);
+    pop();
+
+
     noFill();
     stroke(255);
     //ellipse(bugXArray[i], bugYArray[i], bugDiameter[i], bugDiameter[i]);
   }
 
   for (let i = 0; i < numBugs; i++){
+
     for (let j = 0; j < numBugs; j++){
             if (mouseX < (width/2)+20 && mouseX > (width/2) - 20 && mouseY < (height/2) + 20 && mouseY > (height/2) - 20 ){
               strokeWeight(2);
@@ -102,24 +132,16 @@ function draw() {
               stroke((j+20)*5,i+2*25);
             }
 
-            if (bugDiameter[i] < 50 && bugDiameter[j] < 50){
+            if (bugDiameter[i] % 2 == 0){
               line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
               line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-              line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
-              line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
-            }else if  (bugDiameter[i] > 50 && bugDiameter[j] < 50){
-              line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
-              line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-              line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
-              line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
-            }else if  (bugDiameter[j] > 50 && bugDiameter[i] < 50){
-              line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
-              line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-              line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
-              line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
             }else{
               line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
               line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
+            }if (bugDiameter[j] % 2 == 0){
+              line2X = bugDiameter[j]*sin((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
+              line2Y = bugDiameter[j]*cos((frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
+            }else{
               line2X = bugDiameter[j]*sin((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugXArray[j];
               line2Y = bugDiameter[j]*cos((-frameCount/bugDiameter[j]/m)+bugDiameter[j]/m)+bugYArray[j];
             }
@@ -216,10 +238,14 @@ function draw() {
        }
      }
    }
+
+
+
  Line1XArray = [];
  Line1YArray = [];
  Line2XArray = [];
  Line2YArray = [];
  Line7XArray = [];
  Line7YArray = [];
+
 }
