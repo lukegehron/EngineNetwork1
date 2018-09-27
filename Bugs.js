@@ -86,15 +86,16 @@ function setup() {
 function draw() {
   background(255);
   for (i = 0; i < numBugs; i++){
+
     if (bugDiameter[i] % 2 == 0){
       line1X = bugDiameter[i]*sin((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
       line1Y = bugDiameter[i]*cos((frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
     }else{
       line1X = bugDiameter[i]*sin((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugXArray[i];
       line1Y = bugDiameter[i]*cos((-frameCount/bugDiameter[i]/m)+bugDiameter[i]/m)+bugYArray[i];
-    }    
+    }
     //fill(100);
-    if (abs(mouseX - line1X) < 20 && abs(mouseY - line1Y) < 20){
+    if (abs(mouseX - line1X) < 15 && abs(mouseY - line1Y) < 15){
       if (mouseIsPressed){
           bugXArray[i] = bugXArray[i]+((mouseX-pmouseX));
           bugYArray[i] = bugYArray[i]+((mouseY-pmouseY));
@@ -107,6 +108,7 @@ function draw() {
     stroke(220,100);
     noFill();
     ellipse(bugXArray[i],bugYArray[i],bugDiameter[i]*2);
+    ellipse(line1X,line1Y,30*2);
     pop();
 
 
