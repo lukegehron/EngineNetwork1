@@ -57,7 +57,7 @@ let line7Y = 0; //VR + AR
 let diameter7 = 35; //VR + AR
 
 function setup() {
-  createCanvas(700, 400);
+  createCanvas(1065, 650);
   for (let i=0; i<numBugs; i++){
     if (i%2 == 0){
       let x = random(width*(1/7), width*(4/7));
