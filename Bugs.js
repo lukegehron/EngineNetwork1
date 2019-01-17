@@ -19,7 +19,7 @@ ENGINE = 0 -- width/2, height/2 - static
 Items 7+ are Orbital:
   they find the centerpoint of their parent groups and circle around their collective centerpoint
 */
-let nameArray = ["Building Science", "Visualization", "Fabrication",  "Data Visualization", "Computation"];
+let nameArray = ["Building Science", "Visualization", "Fabrication",  "Data Visualization", "Computation", "New1"];
 let bugXArray = [];
 let bugYArray = [];
 let speed = .2;
@@ -40,7 +40,8 @@ let smallNode = [
   {name:"3D Printing", link:3},
   {name:"Laser Cutting", link:3},
   {name:"Parametric Design", link:4},
-  {name:"Interactive Graphics", link:5}
+  {name:"Interactive Graphics", link:5},
+  {name:"Interactive Graphics1", link:6}
 
 ];
 
@@ -162,7 +163,7 @@ function draw() {
           strokeWeight(1);
           stroke(0);
           fill('yellow');
-          ellipse(line7X,line7Y,5,5); //DRAW THE YELLOW DOT ON SMALL NODES 
+          ellipse(line7X,line7Y,5,5); //DRAW THE YELLOW DOT ON SMALL NODES
           pop();
           if (mouseX < line7X+20 && mouseX > line7X - 20 && mouseY < line7Y+20 && mouseY > line7Y - 20 ){
             fill(50);
@@ -208,7 +209,7 @@ function draw() {
         background(255,200);
         text("ENGINE",width/2, height/2+32); //IF MOUSE PRESSED OVER CENTER NODE - ADD WHITE OVERLAY AND SHOW 'ENGINE' TEXT
         pop();
-   }   
+   }
    }
     pop();
 
